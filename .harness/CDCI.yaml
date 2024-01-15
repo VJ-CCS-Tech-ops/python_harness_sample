@@ -1,0 +1,39 @@
+pipeline:
+  name: CD-CI
+  identifier: CDCI
+  projectIdentifier: my_sample_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: test
+        repoName: python_harness_sample
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: Harness Cloud
+                harnessImageConnectorRef: Dockerhub
+                os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: Dockerhub
+                    repo: harness
+                    tags:
+                      - "1.0"
