@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_VJ_CCS_Tech_ops_python_harness_sample_1706266563211-push-trigger-input-set
+  identifier: Build_VJ_CCS_Tech_ops_python_harness_sample_1706266563211pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_VJ_CCS_Tech_ops_python_harness_sample_1706266563211
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
